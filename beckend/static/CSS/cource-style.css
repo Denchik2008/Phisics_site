@@ -1,0 +1,47 @@
+.no_cources_container{
+    margin-left: 38%;
+}
+.no_cources{
+    color: red;
+    font-size: larger;
+}
+.main_container{
+    background-color: #007765;
+    border-radius: 15px;
+}
+.cource_container{
+    background-color: #007765;
+    width: 70%;
+    border-radius: 15px;
+    margin-left: 15%;
+}
+.course{
+    width: 30%;
+    background-color: #007765;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+.cource_url{
+    width: 16%;
+    color: white;
+    font-weight: bolder;
+    transition: 0.5s;
+    font-size: larger;
+    transition: 0.5s;
+}
+.course:hover{
+    background-color: white;
+}
+.cource_url:hover{
+    color: red;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.line{
+    border: none;
+    border-top: 5px dotted #007765;
+    color: #fff;
+    height: 5px;
+    width: 100%;
+}

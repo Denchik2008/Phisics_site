@@ -1,0 +1,44 @@
+.lesson_container{
+    background-color: #007765;
+    width: 70%;
+    border-radius: 15px;
+    margin-left: 15%;
+}
+.lesson{
+    width: 30%;
+    background-color: #007765;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+.lesson_theory{
+    color:#007765;
+    font-size: larger;
+    font-weight: bolder;
+}
+.no_part_container{
+    margin-left: 38%;
+}
+.no_part{
+    color: red;
+    font-size: larger;
+}
+.task{
+    width: 16%;
+    color: #007765;
+    font-weight: bolder;
+    font-size: larger;
+    transition: 0.5s;
+}
+.task:hover{
+    color: red;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.line{
+    border: none;
+    border-top: 5px dotted #007765;
+    color: #fff;
+    height: 5px;
+    width: 100%;
+}

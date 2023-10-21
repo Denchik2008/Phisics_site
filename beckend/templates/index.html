@@ -1,0 +1,40 @@
+{% extends "Base.html" %}
+
+{% block content %}
+<section id="Header_site" style="height: 84px;"></section>
+<section class="section">
+    <div class="main_container">
+        <h1 class="main_title">Сайт для физики</h1>
+    </div>
+</section>
+<head>
+    <link rel="stylesheet" href="..\static\CSS\cource-style.css">
+    <link rel="stylesheet" href="..\static\CSS\pencil_icon_style.css">
+</head>
+<section>
+    <div class="cource_container">
+        <h1 class="main_title">Темы</h1>
+    </div>
+    {% if cources.__len__() %}
+    <div class="cources">
+        <ul>
+            {% print(cources) %}
+            {% for course_id in cources %}
+                <li class="course"><a href="lesson" class = "cource_url">{{ cources[course_id]['name'] }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+        <div class = "no_cources_container">
+            <h1 class="no_cources">Для вас ещё нет доступных тем 😭😭😭😭</h1>
+        </div>
+    {% endif %}
+    {% if is_admin %}
+        <center>
+            <a href="./made-cource.html"><img src="../static/Images/icon-pencil.png" class="icon-pencil"></a>
+        </center>
+    {% endif %}
+
+    <div class="line"></div>
+</section>
+{% endblock %}

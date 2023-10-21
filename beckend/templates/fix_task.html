@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Создание курса</title>
+    <link rel="stylesheet" href="..\static\CSS\made-something.css">
+</head>
+<section>
+    <center>
+        <div class="container">
+            <form method="post" action="fix_task" class="modal-content fix taskform">
+                <label for="name" class="name"><b>Название задания</b></label>
+                <textarea class="js-textarea" placeholder="Введите название задания" name="name" required>{{ task_name }}</textarea>
+
+                <label for="theory" class="discription"><b>Текст задания</b></label>
+                <textarea class="js-textarea" placeholder="Введите текст задания" name="theory" required>{{ task_text }}</textarea>
+
+                <label for="image" class="discription"><b>Картинки(если нужно)</b></label>
+                <input class="js-textarea" type="file" name="image" accept="image/*" multiple>
+                
+                <label for="right_answer" class="discription"><b>Правильный ответ</b></label>
+                <textarea class="js-textarea" placeholder="Введите праивльный ответ" name="right_answer" required>{{ task_right_answer }}</textarea>
+
+                <div class="button-container">
+                    <button type="submit" class="button">Обновить</button>
+                </div>
+            </form>
+        </div>
+    </center>
+</section>
+{% endblock %}

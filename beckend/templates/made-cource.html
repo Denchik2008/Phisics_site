@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Создание курса</title>
+    <link rel="stylesheet" href="..\static\CSS\made-something.css">
+</head>
+<section>
+    <center>
+        <div class="container">
+            <form method="post" action="make_cource" class="modal-content made courseform">
+                <label for="name" class="name"><b>Название темы</b></label>
+                <textarea class="js-textarea" placeholder="Введите название темы" name="name" required></textarea>
+
+                <label for="theory" class="discription"><b>Теория</b></label>
+                <textarea class="js-textarea" placeholder="Введите теорию темы" name="theory" required></textarea>
+
+                <label for="image" class="discription"><b>Картинки(если нужно)</b></label>
+                <input class="js-textarea" type="file" name="image" accept="image/*" multiple>
+                
+                <div class="button-container">
+                    <button type="submit" class="button">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </center>
+</section>
+{% endblock %}
