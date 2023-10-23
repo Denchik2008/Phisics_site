@@ -1,0 +1,76 @@
+{% extends "Base.html" %}
+
+{% block content %} 
+<section id="Header_site" style="height: 84px;"></section>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/task-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/pencil_icon_style.css') }}">       
+</head>
+<section>
+    <div class="task_container">
+        <h1 class="main_title">Задание</h1>           
+    </div>
+    {% if task[1].__len__() %}
+        <p class = "task_discription">{{ task[1] }}</p>
+    {% else %}
+        <div class = "no_part_container">
+            <h1 class="no_part">В этом задании отсутствует текстовое условие 😭😭😭😭</h1>
+        </div>
+    {% endif %}
+    {% if task[2].__len__() %}
+        {% for photo in task[2] %}
+            <img src="{{ photo }}" class = "task_photo">
+        {% endfor %}
+    {% else %}
+        <div class = "no_part_container">
+            <h1 class="no_part">В этом задании отсутствуют фотографии 😭😭😭😭</h1>
+        </div>
+    {% endif %}
+    <div class="line"></div>
+
+    <div class="input_container">
+        <label><b class="lable_answer">Ответ:</b></label>
+        <input type="text" id="answer_input" placeholder="Введите ответ">
+        <button onclick="get_text('{{right_answer}}')" class="button_submit">Ответить</button>
+    </div>
+    <script>
+        function get_text(right_answer) {
+            var inputElement = document.getElementById('answer_input');
+            var inputValue = inputElement.value;
+            const customAlert = document.createElement('div');
+            customAlert.classList.add('custom-alert');
+
+            if (inputValue === right_answer) {
+                customAlert.innerText = 'Правильно!';
+                document.body.appendChild(customAlert);
+
+                document.body.classList.add("green-background");
+                setTimeout(function() {
+                    customAlert.style.display = 'none';
+                    customAlert.remove();
+                    document.body.classList.remove("green-background");
+                }, 3000);
+
+            } else {
+                customAlert.innerText = 'Не правильно!';
+                document.body.appendChild(customAlert);
+
+                document.body.classList.add("pink-background");
+                setTimeout(function() {
+                    customAlert.style.display = 'none';
+                    customAlert.remove();
+                    document.body.classList.remove("pink-background");
+                }, 3000);
+            }   
+        }
+    </script>
+
+    {% if is_admin %}
+        <center>
+            <a href="fix_tasks"><img src="{{ url_for('static', filename='Images/icon-pencil.png') }}" class="icon-pencil"></a>
+        </center>
+    {% endif %}
+
+    <div class="line"></div>
+</section>
+{% endblock %}

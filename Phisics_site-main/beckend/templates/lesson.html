@@ -1,0 +1,57 @@
+{% extends "Base.html" %}
+
+{% block content %}
+<section id="Header_site" style="height: 84px;"></section>
+<head>
+    <link rel="stylesheet" href="..\static\CSS\lesson-style.css">
+    <link rel="stylesheet" href="..\static\CSS\pencil_icon_style.css">
+</head>
+<section>
+    <div class="lesson_container">
+        <h1 class="main_title">Теория</h1>
+    </div>
+    {% if lessons[1].__len__() %}
+        <p class = "lesson_theory">{{ lessons[1] }}</p>
+    {% else %}
+        <div class = "no_part_container">
+            <h1 class="no_part">В этой теме отсутствует теория 😭😭😭😭</h1>
+        </div>
+    {% endif %}
+    {% if lessons[2].__len__() %}
+        {% for photo in lessons[2] %}
+            <img src="{{ photo }}" class = "lesson_photo">
+        {% endfor %}
+    {% endif %}
+
+    {% if is_admin %}
+        <center>
+            <a href="fix_lesson"><img src="../static/Images/icon-pencil.png" class="icon-pencil"></a>
+        </center>
+    {% endif %}
+
+    <div class="line"></div>
+
+    <div class="lesson_container">
+        <h1 class="main_title">Задания</h1>
+    </div>
+    {% if lessons[3].__len__() %}
+        <ul>
+            {% for task_id in lessons[3] %}
+                <li><a href="{{ task_id }}/task" class = "task">{{ lessons[3][task_id]['name'] }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class = "no_part_container">
+            <h1 class="no_part">В этой теме отсутствуют задания 😭😭😭😭</h1>
+        </div>
+    {% endif %}
+
+    {% if is_admin %}
+        <center>
+            <a href="made_lesson"><img src="../static/Images/icon-pencil.png" class="icon-pencil"></a>
+        </center>
+    {% endif %}
+
+    <div class="line"></div>    
+</section>
+{% endblock %}
