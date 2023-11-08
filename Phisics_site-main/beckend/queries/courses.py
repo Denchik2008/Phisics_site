@@ -16,4 +16,18 @@ def courses():
     cources = cources.data
     for i in range(len(cources)):
         courses[i+1] = {'name' : cources[i][0]}
-    return render_template(TEMPLATE, cources = courses, is_admin = True)
+
+    is_admin = False
+
+    return render_template(TEMPLATE, cources = courses, is_admin = is_admin)
+
+
+def return_cources():
+    courses = {}
+
+    cources = get_item_by_id(1)
+    cources = cources.data
+    for i in range(len(cources)):
+        courses[i+1] = {'name' : cources[i][0]}
+
+    return courses

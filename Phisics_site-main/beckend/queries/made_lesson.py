@@ -1,7 +1,9 @@
 from beckend import app
 from flask import request, redirect, make_response, render_template
 from flask_cors import cross_origin
+
 from ..data_base.database import get_item_by_id, update_item_data
+from ..queries.lesson import return_lesson
 
 
 @app.route("/<id>/make_lesson", methods=['GET', 'POST'])
@@ -24,8 +26,8 @@ def make_lesson(id):
 
         update_item_data(1, cources)
 
-
-    return redirect(f'/{ID}/lesson')
+        lessons = return_lesson(int(id))
+        return render_template('lesson.html', lessons = lessons, is_admin = True)
 
 TEMPLATE = 'made-lesson.html'
 

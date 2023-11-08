@@ -15,19 +15,22 @@
                 <div class="navigation_container">
                     <div class="logo">
                         <a href="#Header_site">
-                            <img height="75" width="65" src="images/1.png" alt="logo">
+                            <img height="75" width="65" src="{{ url_for('static', filename='images/1.png') }}" alt="logo">
                         </a>
                     </div>
                     <div class="menu">
-                        <a id ='log' class="auth_signin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Вход</a>
+                        <a id ='log' class="auth_signin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Админ</a>
                         <div id="id01" class="modal">
                             <form class="modal-content animate loginform" action="login" method="post">
                             <div class="imgcontainer">
                                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
                             </div>
                               <div class="container">
-                                <label for="login"><b>Логин</b></label>
-                                <input type="text" placeholder="Введите логин" name="login" required>
+                                <label for="nickname"><b>nickname</b></label>
+                                <input type="text" placeholder="Введите nickname" name="nickname" required>
+
+                                <label for="login"><b>Почта</b></label>
+                                <input type="text" placeholder="Введите почту" name="email" required>
 
                                 <label for="psw"><b>Пароль</b></label>
                                 <input type="password" placeholder="Введите пароль" name="psw" required>
@@ -35,45 +38,30 @@
                                 <hr>
 
                                 <button type="submit">Войти</button>
-                                <label>
-                                  <input type="checkbox" checked="checked" name="remember"> Запомни меня
-                                </label>
-                              </div>
-
-                              <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Отмена</button>
-                                <span class="psw">Забыл <a href="./password.html">пароль</a>?</span>
                               </div>
                             </form>
                         </div>
-                        <a id='reg' class="auth_signup" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Регистрация</a>
+                        <a id='reg' class="auth_signup" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Помощь</a>
                         <div id="id02" class="modal">
-                            <form class="modal-content animate registerform" action="registration" method="post">
+                            <form class="modal-content animate registerform" action="letter" method="post">
                             <div class="imgcontainer">
-                                <h1 class="main_title">Регистрация</h1>
+                                <h1 class="main_title">Письмо</h1>
                                 <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
                             </div>
                               <div class="container" style="font-size: 20px">
-                                <p>Пожалуйста заполните форму, чтобы создать аккаунт.</p>
+                                <p>Пожалуйста заполните форму, чтобы написать нам.</p>
                                 <hr>
-                                <label for="login"><b>Логин</b></label>
-                                <input type="text" placeholder="Введите логин" name="login" required>
-
-                                <label for="email"><b>Почта</b></label>
-                                <input type="text" placeholder="Введите почту" name="email" required>
-
                                 <label for="name"><b>Имя</b></label>
                                 <input type="text" placeholder="Введите имя" name="name" required>
 
-                                <label for="psw1"><b>Пароль</b></label>
-                                <input type="password" placeholder="Введите пароль" name="psw1" required>
+                                <label for="surname"><b>Фамилия</b></label>
+                                <input type="text" placeholder="Введите фамилию" name="surname" required>
 
-                                <label for="psw2"><b>Повторите пароль</b></label>
-                                <input type="password" placeholder="Повторите пароль" name="psw2" required>
-
+                                <label for="text"><b>Текст</b></label>
+                                <input type="text" placeholder="Введите текст письма" name="text" required>
                                 <hr>
 
-                                <button type="submit">Создать аккаунт</button>
+                                <button type="submit">Отправить письмо</button>
                               </div>
                             </form>
                         </div>

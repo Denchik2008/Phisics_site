@@ -1,8 +1,9 @@
 from beckend import app
 from flask import request, redirect, make_response, render_template
 from flask_cors import cross_origin
-from ..data_base.database import get_item_by_id, update_item_data
 
+from ..data_base.database import get_item_by_id, update_item_data
+from ..queries.courses import return_cources
 
 
 
@@ -20,4 +21,5 @@ def make_cource():
         cources.append([cource_name, cource_theory, ['hhh.png'], []])
         update_item_data(1, cources)
 
-    return redirect('/')
+        courses = return_cources()
+        return render_template('index.html', cources = courses, is_admin = True)

@@ -22,6 +22,24 @@ def page_lesson(id):
         lessons_name[i+1] = {'name': lesson[i][0]}
     lessons[3] = lessons_name
 
-    is_admin = True
+    is_admin = False
 
     return render_template(TEMPLATE, lessons = lessons, is_admin = is_admin)
+
+
+def return_lesson(id):
+    lessons = {}
+
+    cources = get_item_by_id(1)
+    cources = cources.data
+    cource = cources[int(id)-1]       
+
+    lessons[1] = cource[1]  
+    lessons[2] = cource[2]
+    lesson = cource[3]
+    lessons_name = {}
+    for i in range(len(lesson)):
+        lessons_name[i+1] = {'name': lesson[i][0]}
+    lessons[3] = lessons_name
+
+    return lessons

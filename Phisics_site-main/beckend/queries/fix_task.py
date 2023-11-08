@@ -1,7 +1,10 @@
 from beckend import app
 from flask import request, redirect, make_response, render_template
 from flask_cors import cross_origin
+
 from ..data_base.database import get_item_by_id, update_item_data
+from..queries.task import return_task
+
 
 @app.route("/<cource_id>/<id>/fix_task", methods=['GET', 'POST'])
 def fix_task(cource_id, id):
@@ -10,8 +13,6 @@ def fix_task(cource_id, id):
             fix_task_name = request.form['name']
             fix_task_theory = request.form['theory']
             fix_task_right_answer = request.form['right_answer']
-
-            print(cource_id, id)
 
             item = get_item_by_id(1)
             cources = item.data
@@ -26,13 +27,12 @@ def fix_task(cource_id, id):
             update_item_data(1, cources)
 
         except Exception:
-            return redirect('/?error_message=Некорректные данные')
+            return redirect('/?error_message=Некорректные_данные')
 
         data = {'name': fix_task_name, 'theory': fix_task_theory, 'right_answer': fix_task_right_answer}
-        print(data)
-
-
-    return redirect(f'/{cource_id+1}/{id}/task')
+         
+        task, right_answer = return_task(int(cource_id)+1, int(id))
+        return render_template('task.html', task = task, right_answer = right_answer, is_admin = True)
 
 
 TEMPLATE = 'fix_task.html'

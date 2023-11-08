@@ -11,5 +11,3 @@ start_debug()
 # init_mail_messages()
 if __name__ == '__main__' and not Config.HEROKU:
     app.run(host='0.0.0.0', port=8080)
-
-# C:\Users\USER\Downloads\Phisics_site-main\Phisics_site-main

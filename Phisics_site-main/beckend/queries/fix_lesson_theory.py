@@ -1,7 +1,9 @@
 from beckend import app
 from flask import request, redirect, make_response, render_template
 from flask_cors import cross_origin
+
 from ..data_base.database import get_item_by_id, update_item_data
+from ..queries.lesson import return_lesson
 
 
 @app.route("/<id>/fix_lesson_theory", methods=['GET', 'POST'])
@@ -25,7 +27,8 @@ def fix_lesson_theory(id):
         data = {'name': fix_lesson_name, 'theory': fix_lesson_theory}
         print(data)
 
-    return redirect(f'/{id}/lesson')
+        lessons = return_lesson(int(id))
+        return render_template('lesson.html', lessons = lessons, is_admin = True)
 
 TEMPLATE = 'fix_lesson_theory.html'
 
